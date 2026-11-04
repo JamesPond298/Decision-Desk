@@ -17,10 +17,10 @@ A broadcast-style, static-hosted county election research dashboard for GitHub P
 - A backend to cache and validate licensed live feeds. GitHub Pages is static hosting only; never place paid API credentials in browser JavaScript.
 
 ## Deploy to GitHub Pages
-1. Create a **new public repository** named `decision-desk` on your GitHub account.
-2. Upload `index.html`, `styles.css`, `app.js`, `.nojekyll` and `README.md` to the repository root (or push this folder via Git).
+1. Use the existing repository `JamesPond298/Decision-Desk` (public visibility is generally needed for GitHub Pages on GitHub Free).
+2. The files `index.html`, `styles.css`, `app.js`, `.nojekyll` and `README.md` are already committed to the repository root.
 3. Open repository **Settings → Pages → Build and deployment**; choose **Deploy from a branch**, branch **main**, folder **/(root)**, then Save.
-4. The site will appear at `https://YOUR_USERNAME.github.io/decision-desk/` after GitHub Pages deploys it. This web app requires internet access to load its JS mapping libraries, map boundaries, and historical data.
+4. The site will appear at `https://JamesPond298.github.io/Decision-Desk/` after GitHub Pages deploys it. This web app requires internet access to load its JS mapping libraries, map boundaries, and historical data.
 
 ## County CSV import
 Select a year and race in the dashboard and import CSV with one row per county/candidate or county/party. The parser accepts columns:
