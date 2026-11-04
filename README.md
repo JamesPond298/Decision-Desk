@@ -4,8 +4,8 @@ A broadcast-style, static-hosted county election research dashboard for GitHub P
 
 ## Working features
 - National and state drill-down map of U.S. counties with click/hover inspection and zoom.
-- Historical **county presidential** results for 2000–2024, plus statewide U.S. Senate results and state rollups of district-level U.S. House results for even years through 2024, downloaded on demand from [Election Data](https://electiondata.dev/) (sourced from MIT Election Data and Science Lab).
-- Election year / race selection; U.S. Senate, House and Governor CSV imports for county-level data from the user's own sources.
+- Historical county presidential results for 2000–2024 from Election Data/MIT, plus county-level regular general-election U.S. Senate and House returns for 2000–2024 from the [Heideman v1.0.0 compilation](https://doi.org/10.5281/zenodo.22976553) (CC BY 4.0, documented gaps, 48 contiguous states).
+- Election year / race selection; a 2026 comparison control for 2024, 2022 or 2020 baselines; historical county lean labels; and CSV imports for the user's own sources.
 - County vote totals, D-R vote margins, cross-year county history, national aggregates and CSV export.
 - Full-screen broadcast mode, responsive design, visible source availability, and clear missing-data states.
 - 2026 and 2028 cycle placeholders (no invented returns).
