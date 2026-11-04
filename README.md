@@ -4,11 +4,12 @@ A broadcast-style, static-hosted county election research dashboard for GitHub P
 
 ## Working features
 - National and state drill-down map of U.S. counties with click/hover inspection and zoom.
-- Historical **county presidential** results for 2000, 2004, 2008, 2012, 2016, 2020 and 2024, downloaded on demand from [Election Data](https://electiondata.dev/datasets/county-president/) (sourced from [MIT Election Data and Science Lab](https://doi.org/10.7910/DVN/VOQCHQ)).
+- Historical **county presidential** results for 2000–2024, plus statewide U.S. Senate results and state rollups of district-level U.S. House results for even years through 2024, downloaded on demand from [Election Data](https://electiondata.dev/) (sourced from MIT Election Data and Science Lab).
 - Election year / race selection; U.S. Senate, House and Governor CSV imports for county-level data from the user's own sources.
 - County vote totals, D-R vote margins, cross-year county history, national aggregates and CSV export.
 - Full-screen broadcast mode, responsive design, visible source availability, and clear missing-data states.
 - 2026 and 2028 cycle placeholders (no invented returns).
+- Temporary AP or Decision Desk HQ live-provider mode through a user-supplied secure relay URL. Live mode expires at 6:00 a.m. the following morning and falls back to the free historical provider.
 
 ## Not yet implemented
 - Automated county Senate, House and Governor archives. The widely available MIT Senate and House datasets are *statewide* and *district-wide*, not county-level; do not treat those totals as county results. County-to-congressional-district splits require extra geography and returns data.
@@ -21,6 +22,19 @@ A broadcast-style, static-hosted county election research dashboard for GitHub P
 2. The files `index.html`, `styles.css`, `app.js`, `.nojekyll` and `README.md` are already committed to the repository root.
 3. Open repository **Settings → Pages → Build and deployment**; choose **Deploy from a branch**, branch **main**, folder **/(root)**, then Save.
 4. The site will appear at `https://JamesPond298.github.io/Decision-Desk/` after GitHub Pages deploys it. This web app requires internet access to load its JS mapping libraries, map boundaries, and historical data.
+
+## Live provider relay
+
+GitHub Pages is public static hosting, so AP or Decision Desk HQ credentials must never be placed in `config.js` or browser JavaScript. Run a private server-side relay that stores the vendor key and expose only its HTTPS results endpoint.
+
+The dashboard requests:
+
+```
+GET {relay}?provider=AP&year=2026&race=SENATE
+GET {relay}?provider=DDHQ&year=2026&race=HOUSE
+```
+
+The relay should return JSON as `{ "rows": [...] }`. County rows may use the same fields as the CSV importer. State-level rows should include `state_fips` (or `state_po`), candidate, party, votes, year, stage and special. The browser never receives the vendor credential.
 
 ## County CSV import
 Select a year and race in the dashboard and import CSV with one row per county/candidate or county/party. The parser accepts columns:
